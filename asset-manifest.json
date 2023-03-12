@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/RicknMorty/static/css/main.bbb890b9.css",
-    "main.js": "/RicknMorty/static/js/main.b5238868.js",
+    "main.css": "/RicknMorty/static/css/main.7c6284e1.css",
+    "main.js": "/RicknMorty/static/js/main.923758f4.js",
     "static/media/hero.png": "/RicknMorty/static/media/hero.7545611f962baddd3909.png",
+    "static/media/portal.svg": "/RicknMorty/static/media/portal.2f69bea6d42d46ee2990b63d53f58bd8.svg",
+    "static/media/404.svg": "/RicknMorty/static/media/404.3bdc95b2c81815e57663a8f82aff1165.svg",
     "index.html": "/RicknMorty/index.html",
     "static/media/search.svg": "/RicknMorty/static/media/search.c77a50f238257623b5e066b03e852c00.svg",
     "static/media/back.svg": "/RicknMorty/static/media/back.58acb58c0d6bedac27e8921bfdcfc28a.svg",
-    "main.bbb890b9.css.map": "/RicknMorty/static/css/main.bbb890b9.css.map",
-    "main.b5238868.js.map": "/RicknMorty/static/js/main.b5238868.js.map"
+    "main.7c6284e1.css.map": "/RicknMorty/static/css/main.7c6284e1.css.map",
+    "main.923758f4.js.map": "/RicknMorty/static/js/main.923758f4.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbb890b9.css",
-    "static/js/main.b5238868.js"
+    "static/css/main.7c6284e1.css",
+    "static/js/main.923758f4.js"
   ]
 }
