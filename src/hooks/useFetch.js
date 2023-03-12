@@ -1,30 +1,27 @@
 import { useEffect, useState } from 'react';
 
-export const statusList = {
-  IDLE: 'idle',
-  LOAD: 'loading',
-  ERR: 'error',
-};
-
 export const useFetch = callback => {
   const [data, setData] = useState(null);
-
-  const [status, setStatus] = useState(statusList.IDLE);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let ignore = false;
     const fetchData = async () => {
-      setStatus(statusList.LOAD);
+      setIsLoading(true);
+      setErrorMessage(null);
       try {
         const result = await callback();
         if (!ignore) {
           setData(result);
         }
       } catch (error) {
-        setStatus(statusList.ERR);
-        setData([]);
+        setErrorMessage(
+          error.response?.data?.error || 'Something went wrong..'
+        );
+        setData(null);
       } finally {
-        setStatus(statusList.IDLE);
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -32,5 +29,5 @@ export const useFetch = callback => {
       ignore = true;
     };
   }, [callback]);
-  return { data, status };
+  return { data, isLoading, errorMessage };
 };

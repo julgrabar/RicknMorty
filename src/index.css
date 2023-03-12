@@ -49,3 +49,25 @@ p {
   max-width: 1068px;
   margin: 0 auto;
 }
+
+button {
+  background-color: #00b0c8;
+  padding: 10px 15px;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #00b0c8;
+  padding: 10px 15px;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}

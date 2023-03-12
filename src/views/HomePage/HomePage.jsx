@@ -1,10 +1,9 @@
-import { CharactersList } from 'components/CharactersList/CharactersList';
 import { useSearchParams, useLocation } from 'react-router-dom';
-import { statusList, useFetch } from 'hooks';
 import { useState, useCallback } from 'react';
-import { getCharacterByName, getCharacters } from 'services/api-service';
-import hero from 'images/hero.png';
-import searchImg from 'images/search.svg';
+import { CharactersList, Loader } from 'components/';
+import { useFetch } from 'hooks';
+import { getCharacterByName, getCharacters } from 'services';
+import images from 'images';
 import './homepage.scss';
 
 export const HomePage = () => {
@@ -12,28 +11,37 @@ export const HomePage = () => {
   const { pathname, search } = useLocation();
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const searchCharacter = useCallback(() => getCharacterByName(query), [query]);
-  const { data, status } = useFetch(query ? searchCharacter : getCharacters);
+  const { data, isLoading, errorMessage } = useFetch(
+    query ? searchCharacter : getCharacters
+  );
+
+  const changeQuery = e => {
+    setQuery(e.target.value);
+    setSearchParams({ query: e.target.value });
+  };
 
   return (
     <div className="homepage">
-      <img className="homepage__hero" src={hero} alt="Rick and Morty" />
+      <img
+        className="homepage__hero"
+        src={images.heroImg}
+        alt="Rick and Morty"
+      />
       <div className="homepage__filter">
-        <img src={searchImg} alt="search" />
+        <img src={images.searchImg} alt="search" />
         <input
           type="text"
           value={query}
-          onChange={e => {
-            setQuery(e.target.value);
-            setSearchParams({ query: e.target.value });
-          }}
+          onChange={changeQuery}
           placeholder="Filter by name..."
         />
       </div>
-      {status === statusList.IDLE && data && (
+
+      {!isLoading && data && (
         <CharactersList items={data} loc={pathname + search} />
       )}
-      {status === statusList.LOAD && <p>Loading...</p>}
-      {status === statusList.ERR && <p>Something went wrong...</p>}
+      {isLoading && <Loader size={100} />}
+      {errorMessage && !isLoading && <p>{errorMessage}</p>}
     </div>
   );
 };
