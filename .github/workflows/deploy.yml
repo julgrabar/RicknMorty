@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
 
+env: 
+  REACT_APP_API_KEY: AIzaSyB4wQp9hE7-VaAG6zJtI8k9Bel_O53RzCY
+  REACT_APP_AUTH_DOMAIN: ricknmorty-380211.firebaseapp.com
+  REACT_APP_PROJECT_ID: ricknmorty-380211
+  REACT_APP_STORAGE_BUCKET: ricknmorty-380211.appspot.com
+  REACT_APP_MESSAGING_SENDER_ID: 490519029269
+  REACT_APP_APP_ID: 1:490519029269:web:525b78bd66a3a72e83d01c
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
